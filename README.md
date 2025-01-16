@@ -1,32 +1,50 @@
-# AskNITA: Multi-Model AI Documentation Assistant
+# AskNITA 🤖
 
-An intelligent documentation assistant that leverages multiple AI models (Mistral, Groq, OpenRouter, Ollama) to provide accurate and reliable answers to your questions. Built with Streamlit and Supabase, AskNITA uses vector similarity search to find and analyze relevant documentation chunks before generating responses.
+AskNITA is an advanced AI-powered documentation assistant that combines multiple language models to provide accurate and context-aware responses to your questions. Built with modern technologies like Streamlit and Supabase, it uses vector similarity search to intelligently process and retrieve information from documentation.
 
-## Features
+![AskNITA Banner](https://raw.githubusercontent.com/SrishantKumar/asknita/main/docs/banner.png)
 
-- **Multiple AI Providers**: Uses Mistral, Groq, OpenRouter, and Ollama for robust and reliable responses
-- **Vector Database Storage**: Utilizes Supabase for efficient storage and retrieval of documentation chunks
-- **Smart Failover**: Automatically switches between AI providers if one fails or hits rate limits
-- **Documentation Crawler**: Built-in crawler to index and chunk documentation content
-- **Modern Streamlit UI**: Clean and intuitive user interface for asking questions
-- **Vector Similarity Search**: Finds the most relevant documentation chunks for accurate answers
+## 🌟 Key Features
 
-## Prerequisites
+- 🧠 **Multi-Model AI Integration**
+  - Mistral AI for primary responses
+  - Groq for fast processing
+  - OpenRouter for model variety
+  - Local Ollama for offline capabilities
+
+- 🔍 **Smart Search & Retrieval**
+  - Vector-based similarity search
+  - Context-aware response generation
+  - Automatic chunk optimization
+
+- 🔄 **Reliability Features**
+  - Automatic failover between AI providers
+  - Rate limit handling
+  - Error recovery mechanisms
+
+- 🛠 **Developer Tools**
+  - Documentation crawler and indexer
+  - Vector database integration
+  - Easy-to-use Streamlit interface
+
+## 🚀 Quick Start
+
+### Prerequisites
 
 - Python 3.11+
-- Supabase account and database
+- Supabase account
 - API keys for:
   - Mistral AI
   - Groq
   - OpenRouter
-  - Running Ollama instance (local)
+- Local Ollama installation
 
-## Installation
+### Installation
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
-cd askNITA
+git clone https://github.com/SrishantKumar/asknita.git
+cd asknita
 ```
 
 2. Install dependencies:
@@ -34,64 +52,100 @@ cd askNITA
 pip install -r requirements.txt
 ```
 
-3. Set up environment variables:
-Create a `.env` file with your API keys and configuration:
-```env
-MISTRAL_API_KEY=your_mistral_api_key
-GROQ_API_KEY=your_groq_api_key
-OPENROUTER_API_KEY=your_openrouter_api_key
-SUPABASE_URL=your_supabase_url
-SUPABASE_SERVICE_KEY=your_supabase_key
+3. Configure environment:
+```bash
+cp .env.example .env
+# Edit .env with your API keys and settings
 ```
 
-## Usage
+### Running the Application
 
-1. Start the Streamlit interface:
+1. Start the UI:
 ```bash
 streamlit run asknita_ui.py
 ```
 
-2. To crawl and index new documentation:
+2. Index new documentation:
 ```bash
 python crawl_asknita.py
 ```
 
-## Database Setup
+## 🏗 Architecture
 
-Execute the SQL commands in `site_pages.sql` to:
-1. Create the necessary tables
-2. Enable vector similarity search
-3. Set up proper indexing
+### Components
 
-## Project Structure
+- **Frontend**: Streamlit-based interactive UI
+- **Backend**: 
+  - Multiple AI model integrations
+  - Vector database (Supabase)
+  - Documentation crawler
+- **Database**: PostgreSQL with vector extensions
 
-- `asknita_ui.py`: Main Streamlit UI application
-- `crawl_asknita.py`: Documentation crawler and indexer
-- `site_pages.sql`: Database schema and setup
-- `requirements.txt`: Project dependencies
-- `.env`: Configuration file
+### AI Provider Integration
 
-## Features in Detail
+```python
+AI_PROVIDERS = {
+    'primary': 'Mistral AI',
+    'backup': ['Groq', 'OpenRouter'],
+    'local': 'Ollama'
+}
+```
 
-### AI Provider Management
-- Automatic failover between different AI providers
-- Rate limit handling and error recovery
-- Configurable retry mechanisms
+## 📦 Project Structure
 
-### Vector Search
-- Semantic similarity search using embeddings
-- Configurable number of relevant chunks
-- Context-aware response generation
+```
+asknita/
+├── asknita_ui.py      # Main Streamlit interface
+├── crawl_asknita.py   # Documentation crawler
+├── site_pages.sql     # Database schema
+├── requirements.txt   # Dependencies
+└── .env              # Configuration
+```
 
-### Documentation Processing
-- Automatic chunking of documentation
-- Preservation of code blocks and formatting
-- Metadata extraction and storage
+## 🛠 Configuration
 
-## Contributing
+### Environment Variables
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+```env
+MISTRAL_API_KEY=your_mistral_key
+GROQ_API_KEY=your_groq_key
+OPENROUTER_API_KEY=your_openrouter_key
+SUPABASE_URL=your_supabase_url
+SUPABASE_SERVICE_KEY=your_supabase_key
+```
 
-## License
+### Database Setup
 
-[Specify your license here]
+1. Create vector-enabled database:
+```sql
+-- Execute commands in site_pages.sql
+```
+
+2. Initialize tables and indexes:
+```bash
+python setup_database.py
+```
+
+## 🤝 Contributing
+
+We welcome contributions! Please follow these steps:
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Built with [Streamlit](https://streamlit.io/)
+- Powered by [Supabase](https://supabase.io/)
+- AI models from:
+  - [Mistral AI](https://mistral.ai/)
+  - [Groq](https://groq.com/)
+  - [OpenRouter](https://openrouter.ai/)
+  - [Ollama](https://ollama.ai/)
